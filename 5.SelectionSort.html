@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Loops - while loop</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter an array of numbers, sepatared by "," !</span>
+	<input type="text" id="tb-number" />
+	<a href="#" id="btn-check-prime" onclick="sortTheArray()">Sort the Array</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		
+		function sortTheArray() {
+
+		    var arrayString = jsConsole.readString("#tb-number");
+			var arrayInt = arrayString.split(',');
+			for (var i in arrayInt) {
+			    arrayInt[i] = parseInt(arrayInt[i], 10);
+			}
+			var currnetSmallestElement = arrayInt[0];
+			for (var i = 0; i < arrayInt.length; i++) {
+			    currnetSmallestElement = arrayInt[i];
+			    var tempIndex = i+1;
+			    var indexOftheSmallest = 0;
+			    var enteredInIfInTheSecondLoop = false;
+			    while (tempIndex<arrayInt.length) {
+			        if (currnetSmallestElement>arrayInt[tempIndex]) {
+			            currnetSmallestElement = arrayInt[tempIndex];
+			            indexOftheSmallest = tempIndex;
+			            tempIndex++;
+			            enteredInIfInTheSecondLoop = true;
+			        }
+			        else {
+			            tempIndex++;
+			        }
+			    }
+			    if (enteredInIfInTheSecondLoop) {
+			        var tempVar = arrayInt[i];
+			        arrayInt[i] = currnetSmallestElement;
+			        arrayInt[indexOftheSmallest] = tempVar;
+			    }
+			   
+			    
+			}
+			if (arrayInt.length==1) {
+			    jsConsole.write("{" + arrayInt[0] + "}");
+			}
+			else {
+			    for (var i = 0; i < arrayInt.length; i++) {
+			        if (i == 0) {
+			            jsConsole.write("{" + arrayInt[i] + ",");
+			        }
+			        else if (i < arrayInt.length - 1) {
+			            jsConsole.write(arrayInt[i] + ",");
+			        }
+
+			        else {
+			            jsConsole.write(arrayInt[i] + "}");
+			            jsConsole.writeLine();
+			        }
+			    }
+			}
+			
+			jsConsole.writeLine();
+		}
+
+
+	</script>
+</body>
+</html>

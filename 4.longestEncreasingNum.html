@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Loops - while loop</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Enter an array of numbers, sepatared by "," !</span>
+	<input type="text" id="tb-number" />
+	<a href="#" id="btn-check-prime" onclick="findTheSubset()">Find the longest subset of increasing and consecutive elements</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		
+
+	    function findTheSubset() {
+
+	        var arrayString = jsConsole.readString("#tb-number");
+	        var arrayInt = arrayString.split(',');
+	        for (var i in arrayInt) {
+	            arrayInt[i] = parseInt(arrayInt[i], 10);
+	        }
+	        var currentCount = 1;
+	        var finalCount = 1;
+	        for (var i = 0; i < arrayInt.length - 1;) {
+	            var tempArr = [];
+	            tempArr.push(arrayInt[i]);
+	            currentCount = 1;
+	            var tempIndex=i;
+	            while (arrayInt[tempIndex]<arrayInt[tempIndex+1]) {
+	                currentCount++;
+	                tempIndex++;
+	                tempArr.push(arrayInt[tempIndex]);
+	               
+	            }
+	            i += currentCount;
+	            if (currentCount>finalCount) {
+	                finalCount = currentCount;
+	                var finallArr = [].concat(tempArr);
+	            }
+	            
+	        }
+	        if (finalCount==1) {
+	            jsConsole.writeLine("{"+arrayInt[0] +"}");
+	        }
+	        else {
+	            for (var i = 0; i <finallArr.length; i++) {
+	                if (i == 0) {
+	                    jsConsole.write("{" + finallArr[i] + ",");
+	                }
+	                else if (i < finallArr.length - 1) {
+	                    jsConsole.write(finallArr[i] + ",");
+	                }
+	                else {
+	                    jsConsole.writeLine(finallArr[i] + "}");
+	                }
+
+	            }
+	        }
+	      
+
+			//jsConsole.writeLine();
+		}
+
+
+	</script>
+</body>
+</html>

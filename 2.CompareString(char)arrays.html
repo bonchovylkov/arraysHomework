@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Loops - while loop</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <span>Write the first string(char) array's elements, separated by " ," (with even count elements)!</span>
+    <input type="text" id="arrayOne" />
+    <br />
+    <span>Write the second string(char) array's elements, separated by " ,"(with even count elements) !</span>
+	<input type="text" id="arrayTwo" />
+	<a href="#" id="btn-check-prime" onclick="readTheArrays()">Compare the arrays lexicographycly</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+		
+
+	    function readTheArrays() {
+		    var arrayOneAsString = jsConsole.readString("#arrayOne");
+		    var arrayTwoAsString = jsConsole.readString("#arrayTwo");
+
+		    var firstArray = arrayOneAsString.split(',');
+		    var secondArray = arrayTwoAsString.split(',');
+		    var arraysLenght = 0;
+		    for (var i in firstArray) {
+		        arraysLenght++;
+		    }
+		   
+		   
+		    for (var i = 0; i < arraysLenght; i++) {
+		        if (firstArray[i]>secondArray[i]) {
+		            
+		            jsConsole.writeLine(firstArray[i] + " is after " + secondArray[i] + " lexicographyclly!");
+		        }
+		        else {
+		            jsConsole.writeLine(firstArray[i] + " is before " + secondArray[i] + " lexicographyclly!");
+		        }
+		    }
+
+		
+
+			//jsConsole.writeLine("The number " + number + " is " + (isPrime ? "" : " not ") + " prime");
+		}
+
+
+	</script>
+</body>
+</html>
